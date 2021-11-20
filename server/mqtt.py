@@ -34,6 +34,9 @@ class EdgeCom:
         #call the sensor callback
         sensor.on_data_recv(msg.payload)
     
+    def send(self, topic, msg):
+        self.mqtt_client.publish(topic, msg)
+
     def stop(self):
         print("Stopping the mqtt client thread.")
         self.mqtt_client.loop_stop()

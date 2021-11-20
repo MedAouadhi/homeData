@@ -2,8 +2,9 @@
 from sensors import Sensor
 from mqtt import EdgeCom
 from backend import MyDB
-import signal
+import signal, time
 
+PERIOD_SEC = 60
 class ProgramKilled(Exception):
     pass
 
@@ -21,7 +22,8 @@ if __name__ == "__main__":
 
     while True:
         try:
-            pass
+            client.send("all", "send")
+            time.sleep(PERIOD_SEC)
         except ProgramKilled:
             client.stop()
             #TODO send a mail notifying that the server has shutdown
