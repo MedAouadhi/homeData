@@ -16,7 +16,7 @@ if __name__ == "__main__":
     signal.signal(signal.SIGINT, signal_handler)
     backend = MyDB("https://homebase-2a426-default-rtdb.europe-west1.firebasedatabase.app/")
     client = EdgeCom("awax.local")
-    tempSensor = Sensor("temp", "livingRoom", "temp", client, backend).start()    
+    tempSensor = Sensor("BMP180-temp", "livingRoom", "temp", client, backend).start()    
     humidSensor = Sensor("humid", "livingRoom", "humid", client, backend).start()
 
 
@@ -26,5 +26,6 @@ if __name__ == "__main__":
             time.sleep(PERIOD_SEC)
         except ProgramKilled:
             client.stop()
+        finally:
             #TODO send a mail notifying that the server has shutdown
             exit(1)

@@ -22,7 +22,7 @@ class Sensor:
     
     def on_data_recv(self, data):
         print("{} Data received: {}.".format(str(self), str(data)))
-        self.backend.add_measurement(self.location, self.type, int(data))
+        self.backend.add_measurement(self.location, self.type, float(data))
 
     def start(self):
         self.edge_client.add_sensor(self)
