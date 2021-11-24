@@ -11,7 +11,7 @@ class MyDB:
 	def __init__(self, url):
 		self.url = url
 		# connec to the db
-		if self.connect("creds.json"):
+		if self.connect("/home/pi/homeData/server/creds.json"):
 			print("Successfully connected to the DB.")
 
 	def connect(self, cred_path):
